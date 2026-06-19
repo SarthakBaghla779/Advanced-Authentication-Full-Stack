@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_URL = "https://your-backend.onrender.com/auth/api";
+const API_URL = "/auth/api";
 // const API_URL = "http://localhost:6060/auth/api";
 
 axios.defaults.withCredentials = true;
