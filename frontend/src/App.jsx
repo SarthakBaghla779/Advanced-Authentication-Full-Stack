@@ -2,7 +2,7 @@ import FloatingShape from "./components/FloatingShape";
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
-import VerifyEmail from "./pages/verifyEmail";
+import VerifyEmail from "./pages/VerifyEmail";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
