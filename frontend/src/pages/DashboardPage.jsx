@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/authStore";
-import { formatDate } from "../utils/Date";
+import { formatDate } from "../utils/date";
 import { LogOut } from "lucide-react";
 
 const DashboardPage = () => {
