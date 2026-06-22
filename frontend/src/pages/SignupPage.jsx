@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import { motion } from "framer-motion";
 import { Loader, Lock, Mail, User } from "lucide-react";
-import Input from "../components/input";
+import Input from "../components/Input.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordStrengthMeter from "../components/PasswordStrengthMeter.jsx";
 import { useAuthStore } from "../store/authStore.js";
