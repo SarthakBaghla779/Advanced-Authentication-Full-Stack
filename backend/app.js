@@ -1,5 +1,5 @@
 import express, { application } from 'express';
-import dotenv, { parse } from 'dotenv';
+import dotenv from 'dotenv';
 import dbConnect from './config/dbconnect.js';
 import authRouter from './routes/auth_routes.js';
 import cookieParser from 'cookie-parser';
@@ -30,7 +30,7 @@ app.use("/auth/api", authRouter);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-app.get("*", (req, res) => {
+app.use((req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 })
 
