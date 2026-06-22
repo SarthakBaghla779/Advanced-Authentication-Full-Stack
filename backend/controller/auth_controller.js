@@ -3,6 +3,8 @@ import argon2 from "argon2";
 import User from "../models/user_model.js";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
+import dotenv from "dotenv";
+dotenv.config();
 
 import { GenerateCookieandToken } from "../utils/GenerateCookieandToken.js";
 // import { SendWelcomeEmail } from "../mailtrap/emails.js";
@@ -137,7 +139,7 @@ export const forgotPassword = async (req, res) => {
         user.resetPasswordToken = resetToken;
         user.resetPasswordExpiresIn = resetTokenExpiresAt;
         await user.save();
-        await SendPasswordResetRequest(user.email, `http://localhost:5173/reset-password/${resetToken}`);
+        await SendPasswordResetRequest(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
         res.status(200).json({
             success: true,
             message: "Password Reset email Sent successfully!"
