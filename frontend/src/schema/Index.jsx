@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import { useField } from "formik";
-import Input from "../components/input";
+import Input from "../components/Input";
 
 export const signupSchema = Yup.object({
   name: Yup.string()

@@ -6,7 +6,7 @@ import Input from "../components/Input.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordStrengthMeter from "../components/PasswordStrengthMeter.jsx";
 import { useAuthStore } from "../store/authStore.js";
-import { signupSchema } from "../schema/index.jsx";
+import { signupSchema } from "../schema/Index.jsx";
 
 const SignupPage = () => {
   // const [name, setName] = useState("");
