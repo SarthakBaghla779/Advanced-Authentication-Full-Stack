@@ -68,7 +68,7 @@ const DashboardPage = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleLogout}
-          className="w-full py-3 px-4 bg-linear-to-r from-pink-500 to-orange-400 text-white font-bold rounded-lg shadow-lg hover:from-pink-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-gray-900 flex items-center justify-center gap-x-2"
+          className="w-full py-3 px-4 bg-linear-to-r from-pink-500 to-orange-400 text-white font-bold rounded-lg shadow-lg hover:from-pink-600 hover:to-orange-700  hover:shadow-xl hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-gray-900 flex items-center justify-center gap-x-2"
         >
           <LogOut size={18} strokeWidth={3} className="text-gray-800" />
           Logout
