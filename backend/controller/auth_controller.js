@@ -9,8 +9,8 @@ dotenv.config();
 import { GenerateCookieandToken } from "../utils/GenerateCookieandToken.js";
 // import { SendWelcomeEmail } from "../mailtrap/emails.js";
 // import { MailTrapClient, sender } from "../mailtrap/mailtrap.config.js";
-import { SendPasswordResetRequest, SendResetSuccessful, SendVerificationEmail } from "../resend/emails.js";
-// import { SendPasswordResetRequest, SendResetSuccessful, SendVerificationEmail } from "../nodemailer/emails.js";
+// import { SendPasswordResetRequest, SendResetSuccessful, SendVerificationEmail } from "../resend/emails.js";
+import { SendPasswordResetRequest, SendResetSuccessful, SendVerificationEmail } from "../nodemailer/emails.js";
 
 export const Signup = async (req, res, next) => {
     const { email, password, name } = req.body;
