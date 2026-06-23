@@ -5,9 +5,7 @@ import authRouter from './routes/auth_routes.js';
 import cookieParser from 'cookie-parser';
 import cors from "cors";
 import path from "path";
-import dns from "dns";
 
-dns.setDefaultResultOrder("ipv4first");
 dotenv.config();
 
 const app = express();
