@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, Loader } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import { useAuthStore } from "../store/authStore";
 import { loginSchema } from "../schema/Index";
 import { Formik } from "formik";
+import { useEffect } from "react";
 
 const LoginPage = () => {
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
-  const { login, error, isLoading } = useAuthStore();
+  const { login, error, isLoading, clearError } = useAuthStore();
   const navigate = useNavigate();
   const initialValues = {
     email: "",
     password: "",
   };
+  const location = useLocation();
 
   const handleSubmit = async (values) => {
     try {
       await login(values.email, values.password);
       navigate("/dashboard");
+      console.log("Here are the Error and message States! : ", { error });
     } catch (error) {
       console.log("There was an Error", error);
     }
   };
+
+  useEffect(() => {
+    clearError();
+    console.log("Login Page Mounted!");
+  }, [location.pathname]);
 
   return (
     <Formik
@@ -94,6 +102,7 @@ const LoginPage = () => {
               <div className="flex justify-between mb-6">
                 <Link
                   to="/forgot-password"
+                  onClick={clearError}
                   className="text-sm text-pink-400 hover:text-pink-500"
                 >
                   Forgot Password?
@@ -122,6 +131,7 @@ const LoginPage = () => {
               First time Visiting Us?
               <Link
                 to={"/signup"}
+                onClick={clearError}
                 className="text-pink-400  ml-2  hover:text-pink-500"
               >
                 SignUp

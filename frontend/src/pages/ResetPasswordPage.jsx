@@ -1,23 +1,26 @@
 import React, { use, useState } from "react";
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/authStore";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Input from "../components/Input";
 import { Lock } from "lucide-react";
 import toast from "react-hot-toast";
 import { Formik } from "formik";
 import { resetSchema } from "../schema/Index";
+import { useEffect } from "react";
 
 const ResetPasswordPage = () => {
   // const [password, setPassword] = useState("");
   // const [confirm, setConfirm] = useState("");
-  const { resetpassword, error, message, isLoading } = useAuthStore();
+  const { resetpassword, error, message, isLoading, clearError } =
+    useAuthStore();
   const initialValues = {
     password: "",
     confirm: "",
   };
   const { token } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onSubmit = async (values) => {
     try {
@@ -33,6 +36,10 @@ const ResetPasswordPage = () => {
       toast.error(error.message || "Error Resetting Password!");
     }
   };
+
+  useEffect(() => {
+    clearError();
+  }, [location.pathname]);
   return (
     <>
       <Formik

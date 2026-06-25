@@ -7,12 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 import PasswordStrengthMeter from "../components/PasswordStrengthMeter.jsx";
 import { useAuthStore } from "../store/authStore.js";
 import { signupSchema } from "../schema/Index.jsx";
+import { useEffect } from "react";
 
 const SignupPage = () => {
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
-  const { signup, error, isLoading } = useAuthStore();
+  const { signup, error, isLoading, clearError } = useAuthStore();
   const navigate = useNavigate();
 
   const intialValues = {
@@ -29,6 +30,10 @@ const SignupPage = () => {
       console.log("There was an Error", error);
     }
   };
+
+  useEffect(() => {
+    clearError();
+  }, [location.pathname]);
 
   return (
     <Formik
@@ -143,6 +148,7 @@ const SignupPage = () => {
               Already have an Account?
               <Link
                 to={"/"}
+                onClick={clearError}
                 className="text-pink-400  ml-2  hover:text-pink-500"
               >
                 Login

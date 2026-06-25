@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 import { toast } from "react-hot-toast";
 
@@ -9,7 +9,8 @@ const VerifyEmail = () => {
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const isloading = false;
-  const { error, verifyemail } = useAuthStore();
+  const location = useLocation();
+  const { error, verifyemail, clearError } = useAuthStore();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,6 +55,10 @@ const VerifyEmail = () => {
       handleSubmit(new Event("submit"));
     }
   }, [code]);
+
+  useEffect(() => {
+    clearError();
+  }, [location.pathname]);
 
   return (
     <>

@@ -4,21 +4,30 @@ import { useState } from "react";
 import { useAuthStore } from "../store/authStore";
 import Input from "../components/Input";
 import { ArrowLeft, Loader, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Formik } from "formik";
 import { forgotSchema } from "../schema/Index";
+import { useEffect } from "react";
 
 const ForgotPasswordPage = () => {
   const [isSubmitted, setisSubmitted] = useState(false);
-  const { isLoading, forgotpassword, error, message } = useAuthStore();
+  const { isLoading, forgotpassword, error, message, clearError } =
+    useAuthStore();
   const initialValues = {
     email: "",
   };
+  const location = useLocation();
 
   const handleSubmit = async (values) => {
     await forgotpassword(values.email);
+    console.log("Here are error and message states!", { error, message });
     setisSubmitted(true);
   };
+
+  useEffect(() => {
+    console.log("Forgot Password Page Mounted! ");
+    clearError();
+  }, [location.pathname]);
 
   return (
     <>
@@ -109,6 +118,7 @@ const ForgotPasswordPage = () => {
             <div className="px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center">
               <Link
                 to={"/"}
+                onClick={clearError}
                 className="text-sm text-pink-500 hover:text-pink-400 flex items-center"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" /> Back to Login
